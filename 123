@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Dropdown Questions</title>
+    <style>
+        body {
+           
+            background-size: cover; /* This will make the background image cover the entire container */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center; 
+            font-family: "Sassoon", cursive, sans-serif;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-image: url('your-image-url.jpg'); /* Replace 'your-image-url.jpg' with the actual URL or path to your background image */
+    background-size: cover; /* This will make the background image cover the entire container */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center center; /* Center the background image */
+    background-color: #d1e9f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+        .dropdown-container {
+            margin-bottom: 20px;
+        }
+
+        .dropdown-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .dropdown-container select,
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .collapsible {
+            background-color: #12b8f5;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #ff5722;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: #fff;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .dropdown-content button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 5px 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Custom radio button styles */
+        .radio-dropdown input[type="radio"] {
+            display: none; /* Hide the default radio button */
+        }
+
+        .radio-dropdown label {
+            display: block;
+            position: relative;
+            padding-left: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .radio-dropdown label:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #000000;
+            border-radius: 50%;
+        }
+
+        .radio-dropdown input[type="radio"]:checked + label:before {
+            background-color: #aebdcd;
+            border-color: #1d80e9;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+    
+        /* Add your additional styles for radio buttons and custom dropdowns here */
+
+    </style>
+</head>
+<body>
+    <div class="app-container">
+ <!-- Collapsible sections for evaluation -->
+
+    <div class="dropdown-container">
+        <label for="schoolDropdown">Select School:</label>
+        <select id="schoolDropdown" name="school" required>
+            <option value="Sana SM">Sana SM</option>
+            <option value="Modern School">Modern School</option>
+            <option value="Salsabil">Salsabil</option>
+           <option value="Grace Foundation School">Grace Foundation School</option>
+              <option value="New Excellent School">New Excellent School</option>
+           <option value="Oxford School">Oxford School</option>
+           <option value="(Bangalore group) Al Ameen hoskote branch">(Bangalore group) Al Ameen hoskote branch</option>
+           <option value="(Bangalore group) Al Ameen Kambalposh">(Bangalore group) Al Ameen Kambalposh</option>
+          <option value="Al Hidayah International Public School">Al Hidayah International Public School</option>
+           <option value="Al Huda Uni Kids Hassan">Al Huda Uni Kids Hassan</option>
+           <option value="Al Noor Public School(Borkhola)">Al Noor Public School(Borkhola)</option>
+          <option value="Al Noor Public School(Borjatrapur)	">Al Noor Public School(Borjatrapur)</option>
+         <option value="Al Noor Public School(Ganigram)	">Al Noor Public School(Ganigram)</option>
+           <option value="Al-Ameen Academy">Al-Ameen Academy</option>
+          <option value="Al-Ameen Academy Paikpari	">Al-Ameen Academy Paikpari	</option>
+            <option value="Al-Ameen Academy Patharchapuri, Birbhum	">Al-Ameen Academy Patharchapuri, Birbhum	</option>
+            <option value="Al-Ameen main branch(lal bagh)	">Al-Ameen main branch(lal bagh)	</option>
+           <option value="Al-Ameen Mission(	Nadia)">Al-Ameen Mission(	Nadia)</option>
+           <option value="Al-Ameen Mission(	Howrah)">Al-Ameen Mission(	Howrah)</option>
+          <option value="Al-Ameen Mission Academy Nayabaz">Al-Ameen Mission Academy Nayabaz</option>
+             <option value="Al-Ameen Mission School(Midnapore Paschim)">Al-Ameen Mission School(Midnapore Paschim)</option>
+           <option value="Al-Ameen Model School(howrah)">Al-Ameen Model School(howrah)</option>
+          <option value="Al-Ameen Model School">Al-Ameen Model School</option>
+           <option value="Al-Ameen Model School(Murshidabad)">Al-Ameen Model School(Murshidabad)</option>
+           <option value="Al-Ameen Model School Usani)">Al-Ameen Model School Usani</option>
+          <option value="Al-Huda Islamic English School">Al-Huda Islamic English School</option>
+          <option value="Al-huda kudachi">Al-huda kudachi</option>
+           <option value="Alfa(Adoni)">Alfa(Adoni)</option>
+          <option value="Alfa(	Nandiyal)">Alfa(	Nandiyal)</option>
+            <option value="Ali Progressive E.M. School">Ali Progressive E.M. School</option>
+            <option value="Allama Iqbal International School (AIIS)">Allama Iqbal International School (AIIS)</option>
+           <option value="APS- Barabanki">APS- Barabanki</option>
+           <option value="Ashraf Model School - Hyderabad	">Ashraf Model School - Hyderabad	</option>
+           <option value="B.S Nursery and Primary School	">B.S Nursery and Primary School	</option>
+           <option value="Blossom School	">Blossom School	</option>
+             <option value="Creative Minds Montessori	">Creative Minds Montessori	</option>
+          <option value="Crown Public	">Crown Public	</option>
+            <option value="Da-rul Arqam Islamic School	">Da-rul Arqam Islamic School	</option>
+            <option value="Deeniyat Muallima College	">Deeniyat Muallima College	</option>
+           <option value="Divine School	">Divine School</option>
+          <option value="Elite creative school Kolar	">Elite creative school Kolar</option>
+            <option value="English Medium School	">English Medium School</option>
+            <option value="Enlighten school	">Enlighten school</option>
+          <option value="Faith International School	">Faith International School</option>
+          <option value="Faizul Islam Public School	">Faizul Islam Public School</option>
+           <option value="florida school(Arafath branch)	">florida school(Arafath branch)</option>
+           <option value="Florida school(sangam, Bengaluru, Karnataka 560068)	">Florida school(sangam, Bengaluru, Karnataka 560068)</option>
+           <option value="Florida school(VJXC+82W, Kaveri Nagar, Bommanahalli, Bengaluru, Karnataka 560068)	">Florida school(VJXC+82W, Kaveri Nagar, Bommanahalli, Bengaluru, Karnataka 560068)</option>
+            <option value="Florida school(XG6V+J4P, Shamana Nagar, Bapuji Nagar, Bengaluru, Karnataka 560026)	">Florida school(XG6V+J4P, Shamana Nagar, Bapuji Nagar, Bengaluru, Karnataka 560026) School</option>
+           <option value="foundation star(rampur)	">foundation star</option>
+          <option value="foundation star(Luckhnow)	">foundation star</option>
+           <option value="Galaxy Creative School	">Galaxy Creative School</option>
+            <option value="Global Public School- Bapuji nagar	">Global Public School- Bapuji nagar</option>
+           <option value="Global Public School- Chamrajpet	">Global Public School- Chamrajpet</option>
+           <option value="Global Public School- GG Halli	">Global Public School- GG Halli</option>
+           <option value="Global Public School- Shivaji Nagar	">Global Public School- Shivaji Nagar</option>
+           <option value="Global public school-Al inaam	">Global public school-Al inaam</option>
+          <option value="Grace Foundation School UP- Pukhrayane">Grace Foundation School UP- Pukhrayane</option>
+           <option value="Green Crescent International School UP- Sultanpur	">Green Crescent International School UP- Sultanpur</option>
+          <option value="Green cresent school	">Green cresent school</option>
+           <option value="Hamd House an Islamic English Medium School	">Hamd House an Islamic English Medium School</option>
+          <option value="Hilal School (Huda Mysore undertaking)	">Hilal School (Huda Mysore undertaking)</option>
+            <option value="HR International School		">HR International School	</option>
+          <option value="Huda National School- Broadway		">Huda National School- Broadway	</option>
+           <option value="Huda National School- Byrasandra		">Huda National School- Byrasandra	</option>
+           <option value="Huda National School- DJ Halli		">Huda National School-DJ Halli	</option>
+           <option value="Huda National School- Gurupanpallya		">Huda National School-Gurupanpallya	</option>
+           <option value="Huda National School- KBS		">Huda National School-KBS	</option>
+            <option value="Huda National School- KG Halli		">Huda National School-KG Halli	</option>
+           <option value="Huda National School-Rashad Nagar		">Huda National School-Rashad Nagar	</option>
+           <option value="Huda National School-RT Nagar		">Huda National School-RT Nagar	</option>
+           <option value="Huda Pre School - Nodal - Mysore		">Huda Pre School - Nodal - Mysore	</option>
+           <option value="Huda Pre School - Omar - Mysore		">Huda Pre School - Omar - Mysore	</option>
+           <option value="Huda Pre School - Presidency Mysore	">Huda Pre School - Presidency Mysore</option>
+            <option value="Global Public School- GG Halli	">Global Public School- GG Halli</option>
+          <option value="Huda Public School(Chamrajnagar)	">Huda Public School(Chamrajnagar)</option>
+           <option value="Idiscover	">Idiscover</option>
+           <option value="ILM International School	">ILM International School</option>
+          <option value="Ilma International School	">Ilma International School</option>
+           <option value="Imam Shafi Rah Matric. Hr. Sec. School	">Imam Shafi Rah Matric. Hr. Sec. School</option>
+           <option value="Iqra millat school	">Iqra millat school</option>
+          <option value="JH Academy s	">JH Academy s</option>
+           <option value="Junnedia	">Junnedia</option>
+            <option value="Kalam Montessori - Mysore (Nanjangud)	">Kalam Montessori - Mysore (Nanjangud)</option>
+           <option value="KH School	">KH School</option>
+           <option value="Kids Care Academy	">Kids Care Academy</option>
+           <option value="Madni English Medium School (Balekundari)	">Madni English Medium School (Balekundari)</option>
+           <option value="Madni English Medium School (Subhash Nagar)	">Madni English Medium School (Subhash Nagar)</option>
+           <option value="Madni English Medium School (Vaibhav Nagar)	">Madni English Medium School (Vaibhav Nagar)</option>
+          <option value="Marwa Education Foundation Lucknow	">Marwa Education Foundation Lucknow</option>
+           <option value="Master Kids Neelsandra (Modern school)	">Master Kids Neelsandra (Modern school)</option>
+           <option value="MI Creative School	">MI Creative School</option>
+             <option value="Miftah Model School	">Miftah Model School</option>
+           <option value="Millat Islamic	">Millat Islamic</option>
+          <option value="Millennium Public School">Millennium Public School</option>
+           <option value="Model Educational Institute for Girls	">Model Educational Institute for Girls</option>
+           <option value="Mohammedia English Medium - Ghataprabha	">Mohammedia English Medium - Ghataprabha</option>
+           <option value="Mother's Lap (DCA- Deeniyat Creative Academy)">Mother's Lap (DCA- Deeniyat Creative Academy)</option>
+           <option value="Mothers Touch Convent School	">Mothers Touch Convent School</option>
+          <option value="Mount Safa Shahpur School	">Mount Safa Shahpur School</option>
+          <option value="Mount seena	">Mount seena</option>
+          <option value="MS Academy	">MS Academy</option>
+           <option value="MS Global School Morthana	">MS Global School Morthana</option>
+           <option value="Mubaraka Public School	">Mubaraka Public School</option>
+           <option value="MUM - Municipal Urdu Middle School- Ooty	">MUM - Municipal Urdu Middle School- Ooty</option>
+            <option value="National public school">National public school</option>
+           <option value="New Danish English Medium School">New Danish English Medium School</option>
+           <option value="New Excellent School">New Excellent School</option>
+          <option value="New Oxford">New Oxford</option>
+           <option value="Nobel school">Nobel school</option>
+           <option value="Nobel School(Mangalore)">Nobel School(Mangalore)</option>
+           <option value="Noble school- Mumbai">Noble school- Mumbai</option>
+           <option value="Noor Creative School">Noor Creative School</option>
+           <option value="Noorani English Medium Public School">Noorani English Medium Public School</option>
+          <option value="Noumani Play Center - Nagpur">Noumani Play Center - Nagpur</option>
+            <option value="Oxford School">Oxford School</option>
+            <option value="Peace Creative Kasargod">Peace Creative Kasargod</option>
+           <option value="Peace Public School Mangalore">Peace Public School Mangalore</option>
+          <option value="Pinnacle Manipur- Main branch">Pinnacle Manipur- Main branch</option>
+            <option value="Pioneer School">Pioneer School</option>
+           <option value="Q-Way (Rajab Ganj) Public School">Q-Way (Rajab Ganj) Public School</option>
+           <option value="Q-Way (Sitapur) Public School">Q-Way (Sitapur) Public School</option>
+          <option value="Qalam Public School">Qalam Public School</option>
+            <option value="Rida International School(dabagga)">Rida International School(dabagga)</option>
+           <option value="Rida International School(sarfarz)">Rida International School(sarfarz)</option>
+            <option value="Royal convent school">Royal convent school</option>
+           <option value="Ryan International Green School">Ryan International Green School</option>
+           <option value="Ryan thana">Ryan thana</option>
+           <option value="S.P.L. School - Hyderabad">S.P.L. School - Hyderabad</option>
+            <option value="Safa Kids">Safa Kids</option>
+           <option value="Safa Matriculation - Arni">Safa Matriculation - Arni</option>
+           <option value="Safa Nursery - Arni">Safa Nursery - Arni</option>
+           <option value="Sahan International School">Sahan International School</option>
+            <option value="Salsabil Group of Institutions">Salsabil Group of Institutions</option>
+           <option value="Samar Islamic School">Samar Islamic School</option>
+           <option value="Sana Group of Schools">Sana Group of Schools</option>
+          <option value="Sana Group of Schools">Sana Group of Schools</option>
+            <option value="Sana Group of Schools">Sana Group of Schools</option>
+           <option value="scholars paradise">scholars paradise</option>
+           <option value="Scholars Paradise International School (guarabagh)">Scholars Paradise International School (guarabagh)</option>
+           <option value="Scholars Paradise International School (Muazamnagar)">Scholars Paradise International School (Muazamnagar)</option>
+           <option value="Scholars Paradise International School (Vikas Nagar)">Scholars Paradise International School (Vikas Nagar)</option>
+         <option value="Scottish school">Scottish school</option>
+           <option value="Shams School">Shams School</option>
+           <option value="shishumon model mission">shishumon model mission</option>
+           <option value="Silicon City">Silicon City</option>
+            <option value="Solomon High School">Solomon High School</option>
+           <option value="St Humaira">St Humaira</option>
+           <option value="St. Tact English School">St. Tact English School</option>
+           <option value="Suffa Gorakhpur">Suffa Gorakhpur</option>
+          <option value="Suffa school Jaipur">Suffa school Jaipur</option>
+           <option value="Suffa School lucknow">Suffa School lucknow</option>
+           <option value="The Dawn Skills Center">The Dawn Skills Center</option>
+           <option value="Trillium Kids">Trillium Kids</option>
+           <option value="Trillium Kids (Bhupansandra)">Trillium Kids (Bhupansandra)</option>
+          <option value="Trillium Kids (Bhuvaneshwari Nagar)">Trillium Kids (Bhuvaneshwari Nagar)</option>
+             <option value="Trillium Kids (Hegde Nagar)">Trillium Kids (Bhuvaneshwari Nagar)</option>
+           <option value="Trillium Kids (Jc Nagar)">Trillium Kids (Jc Nagar)</option>
+            <option value="Trillium Kids (R T Nagar)">Trillium Kids (R T Nagar)</option>
+            <option value="UBK model school">UBK model school</option>
+             <option value="Usmaniya Primary School">Usmaniya Primary School</option>
+            <option value="W.N. Kids Care (Branch of Waris Nishan)">W.N. Kids Care (Branch of Waris Nishan)</option>
+           <option value="Waris Nishan Public School">Waris Nishan Public School</option>
+           <option value="Wisdom School - Khamgao">Wisdom School - Khamgao</option>
+            <option value="Woods Academy">Woods Academy</option>
+             <option value="Xcel (Aspire) Bangalore">Xcel (Aspire) Bangalore</option>
+           <option value="Ziya Academy">Ziya Academy</option>
+            <!-- Add more school options here -->
+        </select>
+    </div>
+    <div class="dropdown-container">
+        <label for="auditNameDropdown">Select Auditor:</label>
+        <select id="auditNameDropdown" name="auditName" required>
+            <option value="Syeda Arshiya">Syeda Arshiya</option>
+            <option value="Naaz Sultana">Naaz Sultana</option>
+            <!-- Add more auditor options here -->
+        </select>
+    </div>
+    <div class="input-container">
+        <label for="mentorName">Mentor's Name:</label>
+        <input type="text" id="mentorName" name="mentorName" required>
+    </div>
+
+ <button type="button" class="collapsible">Domain: Implementation of Hauna Curriculum</button>
+ <div class="content">
+     <h1>Domain: Implementation of Hauna Curriculum</h1>
+     <form id="evaluationForm1">
+      
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score15" value="1" id="SchoolOfPotential1" required>
+             <label for="SchoolOfPotential1">An annual academic calendar is planned and maintained at school. The calendar reflects assessment dates, holiday details and details of PTM and the working days for each term.</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score15" value="2" id="SchoolOfPractice1" required>
+             <label for="SchoolOfPractice1">The Annual Academic Calendar reflects on the assessment dates, holiday details, and details of PTM, working days for each term. planning milestones/themes for all Grades. This Calendar is shared with all stakeholders.</label>
+             <input type="radio" name="score15" value="3" id="SchoolOfProgress1" required>
+             <label for="SchoolOfProgress1">The Annual Academic Calendar reflects on the assessment dates, holiday details, and details of PTM, working days for each term. planning milestones/themes for all Grades. This calendar is shared with all stakeholders. The Academic Calendar for teachers reflects the dates and deadlines for submissions for all staff. </label>
+             <input type="radio" name="score15" value="4" id="SchoolOfPerformance1" required>
+             <label for="SchoolOfPerformance1">The Annual Academic Calendar reflects on the assessment dates, holiday details, and details of PTM, working days for each term. planning milestones/themes for all Grades. This calendar is shared with all stakeholders. The Academic Calendar for teachers reflects the dates and deadlines for submissions for all staff. The Annual Calendar shows evidence of various integrated academic activities that activities help enhance holistic development at school. Ex: Assembly details/responsibilities for the whole year.</label>
+         </div>
+     </form>
+ </div>
+
+ <button type="button" class="collapsible">Sub-Domain: Curriculum Planning and Assessments (Organizes Lesson Planning)</button>
+ <div class="content">       
+     <form id="evaluationForm2">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score1" value="1" id="SchoolOfPotential2" required>
+             <label for="SchoolOfPotential2">The mentor rarely schedules planning meetings with the teachers. During planning meetings other issues are given a priority over planning for the lessons. Teachers are required to plan their lessons on their own.</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score1" value="2" id="SchoolOfPractice2" required>
+             <label for="SchoolOfPractice2">The mentor schedules group meetings for teachers to plan their lessons. The mentor is rarely present during these meetings. She expects the teachers to plan their lessons and share the minutes with her.</label>
+             <input type="radio" name="score1" value="3" id="SchoolOfProgress2" required>
+             <label for="SchoolOfProgress2">The mentor schedules group meetings with teachers to plan their lessons. The mentor is always present during these meetings. She supports the teachers in planning their lessons. Howecer demo classes are not organized to mentor teachers who need support.</label>
+             <input type="radio" name="score1" value="4" id="SchoolOfPerformance2" required>
+             <label for="SchoolOfPerformance2">The mentor schedules group meetings with teachers to plan their lessons. The mentor is always present during these meetings. She supports the teachers in planning their lessons and organizes demo classes to mentor teachers who need support. She ensures all teachers are confident of what has to be taught in class. The teachers are motivated to support/mentor other teachers at school.</label>
+         </div>
+     </form>
+ </div>
+
+
+  <button type="button" class="collapsible">Sub-Domain: Curriculum Planning and Assessments (Organizes teaching and learning materials)</button>
+ <div class="content">       
+     <form id="evaluationForm3">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score2" value="1" id="SchoolOfPotential3" required>
+             <label for="SchoolOfPotential3">The mentor is not aware of the resources required for the classes. </label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score2" value="2" id="SchoolOfPractice3" required>
+             <label for="SchoolOfPractice3">The mentor is aware of the resources required by the teachers but depends on the teachers to share the requirement list with her.</label>
+             <input type="radio" name="score2" value="3" id="SchoolOfProgress3" required>
+             <label for="SchoolOfProgress3">The mentor is aware of all the activities and ensures the resources are made available to all teachers.</label>
+             <input type="radio" name="score2" value="4" id="SchoolOfPerformance3" required>
+             <label for="SchoolOfPerformance3">The mentor keeps all teaching and learning materials made available, well in advance. She organises for sessions to creatively use hands-on activities to support the needs of the different types of learners.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Curriculum Planning and Assessments (Monitors Assessments)</button>
+ <div class="content">       
+     <form id="evaluationForm4">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score3" value="1" id="SchoolOfPotential4" required>
+             <label for="SchoolOfPotential4">The mentor is not aware of the assessment practices followed by Hauna. She is comfortable with tests and exams. She uses the marks in the tests to understand children </label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score3" value="2" id="SchoolOfPractice4" required>
+             <label for="SchoolOfPractice4">The mentor is aware of the assessment practices but has not been able to successfully shift from the traditional testing to Hauna practice.</label>
+             <input type="radio" name="score3" value="3" id="SchoolOfProgress4" required>
+             <label for="SchoolOfProgress4">The mentor has understood the benefits of the assessment practices at Hauna and has implemented the assessment system at school. She has challenges convincing the parents as a result of which the school makes alterations by issuing  timetables and hall tickets for assessments.</label>
+             <input type="radio" name="score3" value="4" id="SchoolOfPerformance4" required>
+             <label for="SchoolOfPerformance4">The mentor has understood the benefits of the assessment practices at Hauna and has implemented the assessment system at school. She has been successful in convincing the parents. The parents are  happy with the benefits of the system and have been very supportive to the management.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Curriculum Planning and Assessments (Monitors Assessments)</button>
+ <div class="content">       
+     <form id="evaluationForm5">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score4" value="1" id="SchoolOfPotential5" required>
+             <label for="SchoolOfPotential5">The mentor has not shared the assessment checklist with the Hauna team. </label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score4" value="2" id="SchoolOfPractice5" required>
+             <label for="SchoolOfPractice5">The mentor has not been regular in sharing the assessment checklist with the Hauna team</label>
+             <input type="radio" name="score4" value="3" id="SchoolOfProgress5" required>
+             <label for="SchoolOfProgress5">The mentor is prompt in sharing the assessment checklist with the Hauna team. The checklist is at times not completed with a few missing entries.</label>
+             <input type="radio" name="score4" value="4" id="SchoolOfPerformance5" required>
+             <label for="SchoolOfPerformance5">The mentor is prompt in sharing the assessment checklist with the Hauna team. The checklist is diligently maintained and complete with detailed information on missing entries.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Monitoring and mentoring teachers (Monitoring curriculum implementation)</button>
+ <div class="content">       
+     <form id="evaluationForm6">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score5" value="1" id="SchoolOfPotential6" required>
+             <label for="SchoolOfPotential6">The mentor is engaged in her class all the time and does not take any initiative to observe the classes of the teachers under her. </label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score5" value="2" id="SchoolOfPractice6" required>
+             <label for="SchoolOfPractice6">The mentor is involved in other administrative work and delegates the responsibility of mentoring to others. She does not take any initiative to observe the classes of the teachers under her.</label>
+             <input type="radio" name="score5" value="3" id="SchoolOfProgress6" required>
+             <label for="SchoolOfProgress6">The mentor organizes her day to ensure she is available for mentoring teachers under her. She goes on walkthroughs as planned and sets targets for improvement. </label>
+             <input type="radio" name="score5" value="4" id="SchoolOfPerformance6" required>
+             <label for="SchoolOfPerformance6">The mentor has developed a relationship with the teachers through her mentoring skills. She mentors teachers by observing classes and going on walkthroughs. She sets targets for improvement and supports teachers in their journey by taking classes herself and allowing the mentees to observe her classes. The quality of teaching and learning has shown great improvement and this has helped develop a positive school culture.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Monitoring and mentoring teachers (Monitoring curriculum implementation)</button>
+ <div class="content">       
+     <form id="evaluationForm7">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score6" value="1" id="SchoolOfPotential7" required>
+             <label for="SchoolOfPotential7">The mentor is engaged in her class all the time and does not take any initiative to monitor the curriculum</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score6" value="2" id="SchoolOfPractice7" required>
+             <label for="SchoolOfPractice7">The mentor is involved in other administrative work and delegates the responsibility of monitoring to others or relies on the teacher's inputs for monitoring curriculum implementation.</label>
+             <input type="radio" name="score6" value="3" id="SchoolOfProgress7" required>
+             <label for="SchoolOfProgress7">The mentor is aware of the details of the plans used by the teachers. She ensures implementation by observing classes and going on rounds for walkthroughs. </label>
+             <input type="radio" name="score6" value="4" id="SchoolOfPerformance7" required>
+             <label for="SchoolOfPerformance7">The mentor is aware of the details of the plans used by the teachers. She ensures implementation by observing classes and going on rounds for walkthroughs. She uses the results of these observations to reorganise herself to support teachers/ follow up on targets.</label>
+         </div>
+     </form>
+ </div>
+
+ <button type="button" class="collapsible">Sub-Domain: Monitoring and mentoring (Monitors tarbiyyah checklists of students)</button>
+ <div class="content">       
+     <form id="evaluationForm8">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score7" value="1" id="SchoolOfPotential8" required>
+             <label for="SchoolOfPotential8">The mentor is engaged in her class all the time and does not take any initiative to monitor the tarbiyyah checklists. </label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score7" value="2" id="SchoolOfPractice8" required>
+             <label for="SchoolOfPractice8">The mentor is involved in other administrative work and delegates the responsibility of monitoring to others or relies on the teacher's inputs for monitoring tarbiyyah checklists.</label>
+             <input type="radio" name="score7" value="3" id="SchoolOfProgress8" required>
+             <label for="SchoolOfProgress8">The mentor takes initiatives to monitor tarbiyyah checklists. She is not consistent in following up with parents who have not followed up on the checklists. </label>
+             <input type="radio" name="score7" value="4" id="SchoolOfPerformance8" required>
+             <label for="SchoolOfPerformance8">The mentor takes initiatives to monitor tarbiyyah checklists. She is constantly in touch with the teacher and the parent to ensure the tarbiyyah checklists are followed up by parents and renders the required support to the parent as well as the teacher in whatever way required. (Ex:Translating in local language/ sending audio records etc)</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Usage of handbook</button>
+ <div class="content">       
+     <form id="evaluationForm9">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score8" value="1" id="SchoolOfPotential9" required>
+             <label for="SchoolOfPotential9">The mentor is not aware of the handbook or has never used the handbook as a tool to fulfill her responsibilities as a mentor</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score8" value="2" id="SchoolOfPractice9" required>
+             <label for="SchoolOfPractice9">The mentor is aware of the handbook but has never used the handbook as a tool to fulfil her responsibilities as a mentor.</label>
+             <input type="radio" name="score8" value="3" id="SchoolOfProgress9" required>
+             <label for="SchoolOfProgress9">The mentor has only used the trackers in the handbook as a tool to fulfil her responsibilities as a mentor. However she is unaware of the policies suggested by Hauna as a result of which systems and processes are not set. Record keeping is not monitored and maintained at school.. </label>
+             <input type="radio" name="score8" value="4" id="SchoolOfPerformance9" required>
+             <label for="SchoolOfPerformance9">The mentor has proactively utilised the handbook as a tool to fulfil her responsibilities as a mentor. She is aware of the policies suggested by Hauna and has set processes  and systems in line with the policies suggested by Hauna. Wherever required she has proactively framed policies to suit the needs of her school. Records are well maintained and monitored by her on a regular basis.</label>
+         </div>
+     </form>
+ </div>
+
+
+<button type="button" class="collapsible">Domain: Leadership</button>
+ <div class="content">
+     <h1>Domain: Leadership</h1>
+     <form id="evaluationForm10">
+         <h2>Sub-Domain: Participation in Hauna Briefings and trainings</h2>
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score9" value="1" id="SchoolOfPotential10" required>
+             <label for="SchoolOfPotential10">The mentor is irregular to meetings.</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score9" value="2" id="SchoolOfPractice10" required>
+             <label for="SchoolOfPractice10">The mentor attends all meetings organized by Hauna. He/She takes permission from the SPOC in case of absence. She is very passive during meetings and rarely challenges are discussed.</label>
+             <input type="radio" name="score9" value="3" id="SchoolOfProgress10" required>
+             <label for="SchoolOfProgress10">The mentor attends all meetings organized by Hauna. He/She takes permission from the SPOC in case of absence. She is proactive during meetings and contributes to discussions during meetings . </label>
+             <input type="radio" name="score9" value="4" id="SchoolOfPerformance10" required>
+             <label for="SchoolOfPerformance10">The mentor attends all meetings organized by Hauna. He/She takes permission from the SPOC in case of absence. She is proactive during meetings and contributes to discussions during meetings . She ensures all her challenges are addressed during the meets. She takes initiative to share her successes with others.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Participation in Hauna Briefings and trainings( Attendance)</button>
+ <div class="content">       
+     <form id="evaluationForm11">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score10" value="1" id="SchoolOfPotential11" required>
+             <label for="SchoolOfPotential11">Less than or equal to 49%</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score10" value="2" id="SchoolOfPractice11" required>
+             <label for="SchoolOfPractice11">50-74%</label>
+             <input type="radio" name="score10" value="3" id="SchoolOfProgress11" required>
+             <label for="SchoolOfProgress11">75-99% </label>
+             <input type="radio" name="score10" value="4" id="SchoolOfPerformance11" required>
+             <label for="SchoolOfPerformance11">100%</label>
+         </div>
+     </form>
+ </div>
+<button type="button" class="collapsible">Sub-Domain: Professional Development initiatives (Ensures all teachers have attended Hauna Induction Trainings)</button>
+ <div class="content">       
+     <form id="evaluationForm12">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score11" value="1" id="SchoolOfPotential12" required>
+             <label for="SchoolOfPotential12">The mentor does not take initiative to ensure all teachers are trained by Hauna</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score11" value="2" id="SchoolOfPractice12" required>
+             <label for="SchoolOfPractice12">The mentor and all teachers attended the Hauna Induction training at the beginning of the academic year. However, they have been very passive during the trainings and have not participated in the group presentations.  </label>
+             <input type="radio" name="score11" value="3" id="SchoolOfProgress12" required>
+             <label for="SchoolOfProgress12">The mentor ensures all teachers have attended the Hauna Induction training at the beginning of the academic year and have participated in the group presentations and assessments. However she has not followed up with new teachers who have joined during the mid-year.</label>
+             <input type="radio" name="score11" value="4" id="SchoolOfPerformance12" required>
+             <label for="SchoolOfPerformance12">The mentor ensures all teachers have attended the Hauna Induction training at the beginning of the academic year and have participated in the group presentations and assessments. She has ensured that all teachers who have joined during the mid-year are trained with Hauna systems by either enrolling the teacher for training or training them herself.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Professional Development initiatives (Ensures school records suggested by Hauna are well maintained)</button>
+ <div class="content">       
+     <form id="evaluationForm13">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score12" value="1" id="SchoolOfPotential13" required>
+             <label for="SchoolOfPotential13">The records are not well maintained. Data is also missing in these records. (0 to 50%)</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score12" value="2" id="SchoolOfPractice13" required>
+             <label for="SchoolOfPractice13">The mentor has ensured only important records like the attendance registers etc are maintained. All records suggested by Hauna are not maintained. (51 to 70% )  </label>
+             <input type="radio" name="score12" value="3" id="SchoolOfProgress13" required>
+             <label for="SchoolOfProgress13">All the records are maintained with diligence.  (71 to 85%)
+</label>
+             <input type="radio" name="score12" value="4" id="SchoolOfPerformance13" required>
+             <label for="SchoolOfPerformance13">All the records suggested by Hauna are maintained with diligence. These documents are checked regularly by the mentor as well as the HM to ensure compliance to the school policies/policies suggested by Hauna. (86 to 100%</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Parent and community outreach (Organizes Parent Orientations to bring about awareness regarding the program.)</button>
+ <div class="content">       
+     <form id="evaluationForm14">  
+         <!-- First radio button option -->
+         <div class="radio-dropdown">
+             <input type="radio" name="score13" value="1" id="SchoolOfPotential14" required>
+             <label for="SchoolOfPotential14">The mentor is not clear regarding the benefits of the orientations; hence, the orientations are not organised for the academic year.</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score13" value="2" id="SchoolOfPractice14" required>
+             <label for="SchoolOfPractice14">The mentor has organised orientations for parents to bring about awareness regarding Hauna. She has not been able to convey the message successfully as a result of which there is yet lots of confusions amongst parents.  </label>
+             <input type="radio" name="score13" value="3" id="SchoolOfProgress14" required>
+             <label for="SchoolOfProgress14">The mentor has organized orientations at her school. She has tried to make the session effective by inviting her colleague/senior member at school/expert to convince parents as a result of which there is no challenge in the understanding regarding Hauna amongst parents. She has not made any arrangements to orient parents who have not attended the orientation.
+</label>
+             <input type="radio" name="score13"value="4" id="SchoolOfPerformance14" required>
+             <label for="SchoolOfPerformance14">The mentor has organized orientations at her school. She has tried her best to ensure she has all information required to communicate with her parents. She has even sought help with experts to get herself trained to convince parents as a result of which there is no challenge in the understanding regarding Hauna amongst parents. She has made arrangements to orient parents who have not attended the orientation by organising orientations.</label>
+         </div>
+     </form>
+ </div>
+
+<button type="button" class="collapsible">Sub-Domain: Parent and community outreach (Organizes literacy programs for parents.)
+ <div class="content">       
+     <form id="evaluationForm15">  
+      
+         <div class="radio-dropdown">
+             <input type="radio" name="score14" value="1" id="SchoolOfPotential15" required>
+             <label for="SchoolOfPotential15">The mentor has not taken any initiative to organize literacy programs at school. She waits for instructions from the higher authorities to take up any initiatives</label>
+             <!-- Add more radio button options within the dropdown content -->
+             <input type="radio" name="score14"value="2" id="SchoolOfPractice15" required>
+             <label for="SchoolOfPractice15">The mentor is interested in conducting literacy programs for parents but she has not been able to plan or execute this at her school.  </label>
+             <input type="radio" name="score14" value="3" id="SchoolOfProgress15" required>
+             <label for="SchoolOfProgress15">The mentor has organised literacy programs for parents but these classes have not been effective as she has not been able to track progress/gather volunteers to carry out the progam/motivate parents to join the program..
+</label>
+             <input type="radio" name="score14" value="4" id="SchoolOfPerformance15" required>
+             <label for="SchoolOfPerformance15">The mentor has organised literacy programs for parents and these classes have been effective. Parents are highly motivated by this initiative and she has been able to track progress/gather volunteers to carry out the progam/motivate parents to join the program..</label>
+         </div>
+     </form>
+ </div>
+      
+   
+        <!-- Submit button -->
+        <button id="submitForm">Submit</button>
+    </div>
+
+    <script>
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        const collapsibles = document.querySelectorAll('.collapsible');
+
+        radioButtons.forEach((radioButton) => {
+            radioButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+        });
+
+        const submitButton = document.getElementById('submitForm');
+        submitButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            // Form submission logic
+            const formData = new FormData();
+
+            const auditorName = document.getElementById('auditNameDropdown').value;
+            const schoolName = document.getElementById('schoolDropdown').value;
+            const mentorName = document.getElementById('mentorName').value;
+
+            formData.append('auditorName', auditorName);
+            formData.append('schoolName', schoolName);
+            formData.append('mentorName', mentorName);
+
+            radioButtons.forEach((radioButton) => {
+                if (radioButton.checked) {
+                    formData.append(radioButton.name, radioButton.value);
+                }
+            });
+
+            fetch('https://script.google.com/macros/s/AKfycbx7b_ykNVGjm6cAZc1Uo60viiyI2qI3EmRJ3sldrksL9OFaTg2iK7usxX1zs5qgtumO/exec', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.result === 'success') {
+                        alert('Form submitted successfully!');
+                        // Reset form or redirect as needed
+                    } else {
+                        alert('Error submitting form.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('An error occurred.');
+                });
+        });
+
+        collapsibles.forEach((collapsible) => {
+            collapsible.addEventListener('click', function () {
+                const content = this.nextElementSibling;
+                const isCollapsed = content.style.maxHeight === '0px';
+
+                collapsibles.forEach((otherCollapsible) => {
+                    if (otherCollapsible !== this) {
+                        otherCollapsible.classList.remove('active');
+                        otherCollapsible.nextElementSibling.style.maxHeight = '0px';
+                    }
+                });
+
+                if (isCollapsed) {
+                    this.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    this.classList.remove('active');
+                    content.style.maxHeight = '0px';
+                }
+            });
+        });
+    </script>
+    </body>
+</html>
